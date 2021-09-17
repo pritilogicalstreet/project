@@ -1,0 +1,21 @@
+<%= form_with model: @client do |form|%>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <% @client.errors.full_messages_for(:name).each do |message| %>
+    <%= message %>
+  <% end %><br>
+
+  <%= form.label :mobile_no %> 
+  <%= form.text_field :mobile_no %>
+  <% @client.errors.full_messages_for(:mobile_no).each do |message| %>
+    <%= message %>
+  <% end %><br>
+  
+  <%= form.label :company_name %>
+  <%= form.text_field :company_name %>
+  <% @client.errors.full_messages_for(:company_name).each do |message| %>
+    <%= message %>
+  <% end %><br>
+    
+  <%= form.submit %>
+<% end %>

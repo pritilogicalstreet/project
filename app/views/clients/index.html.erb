@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Mobile No</th>
+    <th>Company Name</th>
+    <th colspan="2">Action</th>
+  </thead>
+  <tbody>
+    <% @clients.each do |client| %>
+    <tr>
+      <td><%= client.name %></td>
+      <td><%= client.mobile_no %></td>
+      <td><%= client.company_name %></td>
+      <td><%= link_to "Edit", edit_client_path(client.id), method: :get %></td>
+      <td><%= link_to "Delete", client_path(client.id), method: :delete %></td>
+    </tr>
+    <% end %><br>
+  </tbody>
+</table>
+<%= link_to "new" , new_client_path %>
