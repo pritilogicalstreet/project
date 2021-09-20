@@ -1,0 +1,37 @@
+<div class="card">
+  <h5 class="card-header">Talukas</h5>
+  <div class="card-body">
+    <%= form_with model: @taluka do |form|%>
+    <div class="row mx-1">
+      <div class="col-md-1">
+        <%= form.label :name %>
+      </div>
+      <div class="col-md-4">
+        <%= form.text_field :name %>
+      </div>
+    </div><br>
+
+
+    <div class="row mx-1">
+      <div class="col-md-1">
+        <%= form.label :State_name %>
+      </div>
+      <div class="col-md-4">
+        <%= form.select :state_id, State.all.collect {|s| [s.name, s.id]},{} , {class: "btn btn-secondary dropdown-toggle"} %>
+      </div>
+   </div><br>
+
+
+
+    <div class="row mx-1">
+      <div class="col-md-1">
+        <%= form.label :District_name %>
+      </div>
+      <div class="col-md-4">  
+        <%= form.select :district_id, District.all.collect {|d| [d.name, d.id]},{} , {class: "btn btn-secondary dropdown-toggle"} %><br><br>
+      </div>
+    </div><br>
+  
+      <%= form.submit class: "btn btn-dark" %>
+
+<% end %>

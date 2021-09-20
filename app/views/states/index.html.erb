@@ -1,0 +1,16 @@
+<h1>States</h1>
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+  <% @states.each do |state| %>
+  <tr>
+    <td><%= state.name %></td>
+    <td colspan = "2" ><%= link_to "Edit", edit_state_path(state.id), method: :get %>
+    <%= link_to "Delete", state_path(state.id), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "new" , new_state_path, :class => "btn btn-primary"  %>

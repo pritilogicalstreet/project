@@ -14,3 +14,11 @@
  *= require_self
  */
  @import "bootstrap";
+
+ table, th, td {
+  border: 1px solid black;
+}
+td {
+  padding: 0.5em;
+  margin: 0;
+}

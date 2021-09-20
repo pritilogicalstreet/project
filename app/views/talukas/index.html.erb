@@ -1,0 +1,21 @@
+<h1>Talukas</h1>
+<table class="table" >
+  <thead>
+    <th>Taluka Name</th>
+    <th>District Name</th>
+    <th>State Name</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+  <% @talukas.each do |taluka| %>
+  <tr>
+    <td><%= taluka.name %></td>
+    <td><%= taluka.district.name %></td>
+    <td><%= taluka.state.name %></td>
+    <td colspan = "2" ><%= link_to "Edit", edit_taluka_path(taluka.id), method: :get %>
+    <%= link_to "Delete", taluka_path(taluka.id), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "new" , new_taluka_path, :class => "btn btn-primary"  %>
+

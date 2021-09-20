@@ -1,0 +1,24 @@
+<h1>Districts</h1>
+<table class="table">
+  <thead>
+    <th>District Name</th>
+    <th>State Name</th>
+    <th collapse = "2">Action</th>
+  </thead>
+  <tbody>
+  <% @districts.each do |district| %>
+  <tr>
+    <td><%= district.name %></td>
+    <td><%= district.state.name %></td>
+    <td><%= link_to "Edit", edit_district_path(district.id), method: :get %>
+    <%= link_to "Delete", district_path(district.id), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "new" , new_district_path, :class => "btn btn-primary" %>
+
+
+
+
+
+

@@ -6,7 +6,6 @@ class Client < ApplicationRecord
 
   def self.send_sms(mobile)
     @client = Twilio::REST::Client.new('AC7bf32b67ebfc343901eca7d9eecb17d1', '0d363adce62e1066cf65ebfe18e69142')
-    
     @client.messages.create(
       from: '+16122940730',
       to: "+91#{mobile}",

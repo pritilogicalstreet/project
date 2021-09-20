@@ -18,6 +18,10 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
+  def edit
+    @client = Client.find(params[:id])
+  end
+  
   def update
     @client = Client.find(params[:id])
     if @client.update(client_params)
