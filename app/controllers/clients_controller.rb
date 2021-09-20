@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  require 'twilio-ruby'
   def index
     @clients = Client.all
   end
@@ -12,16 +13,9 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params)
-    if @client.save 
-      redirect_to @client
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @client = Client.find(params[:id])
+    @client = Client.create(client_params)
+    Client.send_sms(@client.mobile_no)
+    redirect_to clients_path
   end
 
   def update
@@ -40,6 +34,7 @@ class ClientsController < ApplicationController
   end
 
   private
+  
   def client_params
     params.require(:client).permit(:name, :mobile_no, :company_name)
   end

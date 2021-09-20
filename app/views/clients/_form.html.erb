@@ -1,21 +1,42 @@
 <%= form_with model: @client do |form|%>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <% @client.errors.full_messages_for(:name).each do |message| %>
-    <%= message %>
-  <% end %><br>
-
-  <%= form.label :mobile_no %> 
-  <%= form.text_field :mobile_no %>
-  <% @client.errors.full_messages_for(:mobile_no).each do |message| %>
-    <%= message %>
-  <% end %><br>
+  <% if client.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+    <ul>
+      <% client.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   
-  <%= form.label :company_name %>
-  <%= form.text_field :company_name %>
-  <% @client.errors.full_messages_for(:company_name).each do |message| %>
-    <%= message %>
-  <% end %><br>
-    
-  <%= form.submit %>
+<div class="row mx-2">
+  <div class="col-md-2 ">
+    <%= form.label :name %>
+  </div>
+  <div class="col-md-4">
+    <%= form.text_field :name, :class => "form-control", :required => true%>
+  </div>
+</div><br>
+
+<div class="row mx-2">
+  <div class="col-md-2 ">
+    <%= form.label :mobile_no %>
+  </div>
+  <div class="col-md-4">
+    <%= form.text_field :mobile_no, :class => "form-control", :required => true %>
+  </div>
+</div><br>
+
+<div class="row mx-2">
+  <div class="col-md-2 ">
+    <%= form.label :company_name %>
+  </div>
+  <div class="col-md-4">
+    <%= form.text_field :company_name, :class => "form-control", :required => true %>
+  </div>
+</div>
+
+<%= form.submit %>
+
 <% end %>
